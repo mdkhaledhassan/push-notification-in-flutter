@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "673634928046",
+    "firebase_url": "https://fir-auth-f0b4b-default-rtdb.firebaseio.com",
+    "project_id": "fir-auth-f0b4b",
+    "storage_bucket": "fir-auth-f0b4b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673634928046:android:52ea87578a78f61eee343f",
+        "android_client_info": {
+          "package_name": "com.example.firebase_push_notification"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUW2KOtbm6RgHnj5RxhBJrvuMUNUmEYiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673634928046:android:df5387a3a73f77c0ee343f",
+        "android_client_info": {
+          "package_name": "com.example.messaging_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUW2KOtbm6RgHnj5RxhBJrvuMUNUmEYiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673634928046:android:dd591c66784df2fcee343f",
+        "android_client_info": {
+          "package_name": "com.example.new_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUW2KOtbm6RgHnj5RxhBJrvuMUNUmEYiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
