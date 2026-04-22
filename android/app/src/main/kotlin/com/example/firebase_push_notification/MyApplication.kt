@@ -1,4 +1,4 @@
-package com.pause.user
+package com.example.firebase_push_notification
 
 import android.app.Application
 import android.app.NotificationChannel
