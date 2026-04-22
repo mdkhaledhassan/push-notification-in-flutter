@@ -15,6 +15,26 @@ import '../app/modules/order/views/order_view.dart';
 
 @pragma('vm:entry-point')
 Future<void> myBackgroundMessageHandler(RemoteMessage message) async {
+  if (message.notification != null) return;
+
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin
+      >()
+      ?.createNotificationChannel(
+        AndroidNotificationChannel(
+          'high_importance_channel',
+          'High Importance Notifications',
+          importance: Importance.max,
+          playSound: true,
+          sound: RawResourceAndroidNotificationSound('notification'),
+          enableVibration: true,
+        ),
+      );
+
   final androidInitialize = AndroidInitializationSettings(
     '@mipmap/ic_launcher',
   );
@@ -24,8 +44,6 @@ Future<void> myBackgroundMessageHandler(RemoteMessage message) async {
     iOS: iOSInitialize,
   );
 
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
   await flutterLocalNotificationsPlugin.initialize(initializationsSettings);
 
   await NotificationHelper.showNotification(
@@ -172,37 +190,19 @@ class NotificationHelper {
   ) async {
     if (GetPlatform.isIOS) return;
 
-    String? title;
-    String? body;
-    String? image;
-    String playLoad = jsonEncode(message.data);
+    if (!data && message.notification != null) {}
 
-    if (data) {
-      title = message.data['title'];
-      body = message.data['body'];
-      image =
-          (message.data['image'] != null &&
-              message.data['image'].toString().isNotEmpty)
-          ? message.data['image']
-          : null;
-    } else {
-      title = message.notification?.title;
-      body = message.notification?.body;
-
-      if (GetPlatform.isAndroid) {
-        final androidImageUrl = message.notification?.android?.imageUrl;
-        image = (androidImageUrl != null && androidImageUrl.isNotEmpty)
-            ? androidImageUrl.startsWith('http')
-                  ? androidImageUrl
-                  : message.data['image']
-            : (message.data['image'] != null &&
-                  message.data['image'].toString().isNotEmpty)
-            ? message.data['image']
-            : null;
-      }
-    }
+    String? title = message.data['title'] ?? message.notification?.title;
+    String? body = message.data['body'] ?? message.notification?.body;
+    String? image =
+        (message.data['image'] != null &&
+            message.data['image'].toString().isNotEmpty)
+        ? message.data['image']
+        : null;
 
     if (title == null || body == null) return;
+
+    String playLoad = jsonEncode(message.data);
 
     try {
       if (image != null && image.isNotEmpty) {
