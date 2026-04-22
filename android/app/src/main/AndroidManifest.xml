@@ -34,6 +34,20 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="high_importance_channel" />
+
+        <!-- Default notification sound -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_sound"
+            android:value="notification" />
+
+        <!-- Default notification icon -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        
         <meta-data android:name="io.flutter.embedding.android.EnableImpeller"
             android:value="false" />
     </application>
