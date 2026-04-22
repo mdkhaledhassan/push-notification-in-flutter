@@ -1,6 +1,7 @@
 import 'package:firebase_push_notification/services/device_token.dart';
 import 'package:firebase_push_notification/services/notification_service.dart';
 import 'package:flutter/material.dart';
+import '../../../style.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +16,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      checkAndShowSoundDialog(context);
+    });
     notificationHelper.notificationPermission();
     deviceToken.getDeviceToken();
     super.initState();
