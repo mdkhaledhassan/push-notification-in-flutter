@@ -36,8 +36,9 @@ Future<void> myBackgroundMessageHandler(RemoteMessage message) async {
       );
 
   final androidInitialize = AndroidInitializationSettings(
-    '@mipmap/ic_launcher',
+    '@drawable/ic_notification',
   );
+
   final iOSInitialize = DarwinInitializationSettings();
   final initializationsSettings = InitializationSettings(
     android: androidInitialize,
@@ -104,7 +105,7 @@ class NotificationHelper {
     }
 
     var androidInitialize = AndroidInitializationSettings(
-      '@mipmap/ic_launcher',
+      '@drawable/ic_notification',
     );
     var iOSInitialize = DarwinInitializationSettings(
       requestSoundPermission: true,
@@ -242,6 +243,8 @@ class NotificationHelper {
           priority: Priority.max,
           styleInformation: bigTextStyleInformation,
           playSound: true,
+          icon: '@drawable/ic_notification',
+          color: Color(0xFFFFA000),
           sound: RawResourceAndroidNotificationSound('notification'),
         );
 
@@ -290,6 +293,8 @@ class NotificationHelper {
           largeIcon: FilePathAndroidBitmap(largeIconPath),
           styleInformation: bigPictureStyleInformation,
           playSound: true,
+          icon: '@drawable/ic_notification',
+          color: Color(0xFFFFA000),
           sound: RawResourceAndroidNotificationSound('notification'),
         );
 
