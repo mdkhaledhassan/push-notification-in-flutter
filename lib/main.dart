@@ -12,6 +12,7 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
 
   try {
     final RemoteMessage? remoteMessage =
